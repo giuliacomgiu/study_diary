@@ -1,0 +1,28 @@
+<h1>Diário de Estudo!</h1>
+
+<h2>Cadastre seu item de estudo</h2>
+<%= form_with do |form| %>
+  <%= form.label :title, "Título" %><br>
+  <%= form.text_field :title %><br><br>
+  <%= form.label :category, "Categoria" %><br>
+  <%= form.text_field :category %> <br><br>
+  <%= form.label :description, "Descrição" %><br>
+  <%= form.text_area :description %><br><br>
+  <%= form.label :deadline, "Prazo" %><br>
+  <%= form.date_field :deadline %><br><br>
+  <%= form.label :deadline, "Tipo" %><br>
+  <%= form.radio_button :type, "text" %>
+  <%= form.label :type_text, "Texto" %>
+  <%= form.radio_button :type, "image" %>
+  <%= form.label :type_image, "Imagem" %>
+  <%= form.radio_button :type, "video" %>
+  <%= form.label :type_video, "Vídeo" %>
+
+<% end %>
+
+<h3>Todos os itens de estudo</h3>
+<% @study_items.each do |study_item| %>
+  <p><%= study_item.title %></p>
+  <p><%= study_item.category %></p>
+  <p><%= study_item.description %></p>
+<% end %>
