@@ -18,4 +18,9 @@ class StudyItemsController < ApplicationController
   def edit
     @study_item = StudyItem.find(params[:id])
   end
+
+  def destroy
+    StudyItem.delete(params[:id])
+    redirect_to root_path
+  end
 end

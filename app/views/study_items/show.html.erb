@@ -3,6 +3,7 @@
 <p><%= @study_item.description %></p>
 <p><%= @study_item.deadline %></p>
 <%= link_to 'Editar', edit_study_item_url %>
+<%= link_to 'Deletar', study_item_path(@study_item), :method => :delete %>
 
 <%#TO DO: move to edit view%>
 <%= form_with do |form| %>
