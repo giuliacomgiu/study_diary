@@ -1,0 +1,5 @@
+<%= form_with model: @study_item do |form| %>
+	<p><%= form.text_field :title%></p>
+	<p><%= form.text_field :category%></p>
+	<p><%= form.date_field :deadline%></p>
+<% end %>
