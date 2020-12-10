@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class StudyItemsController < ApplicationController
   def index
     @study_items = StudyItem.all
   end
