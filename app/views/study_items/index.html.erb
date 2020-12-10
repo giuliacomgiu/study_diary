@@ -22,6 +22,7 @@
 
 <h3>Todos os itens de estudo</h3>
 <% @study_items.each do |study_item| %>
+  <h4><%= link_to study_item.title, study_item_path(study_item) %> </h4>
   <p><%= study_item.title %></p>
   <p><%= study_item.category %></p>
   <p><%= study_item.description %></p>

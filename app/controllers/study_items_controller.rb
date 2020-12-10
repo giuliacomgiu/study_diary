@@ -10,4 +10,8 @@ class StudyItemsController < ApplicationController
                      deadline: params[:deadline],
                      status: false)
   end
+
+  def show
+    @study_item = StudyItem.find(params[:id])
+  end
 end

@@ -1,0 +1,15 @@
+<h2><%= @study_item.title %></h2>
+<p><%= @study_item.category %></p>
+<p><%= @study_item.description %></p>
+<p><%= @study_item.deadline %></p>
+<%= form_with do |form| %>
+<p><%= form.check_box :status %>
+
+<%#TO DO: move to edit view%>
+<%= form.label :status_done, "Concluído" %></p>
+<p><%= form.label :comment, "Comente aqui" %></p>
+<p><%= form.text_area :comment %></p>
+<p><%= form.submit %></p>
+<% end %>
+
+<p><%= link_to 'Voltar', root_path%></p>
