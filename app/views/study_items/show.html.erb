@@ -5,13 +5,22 @@
 <%= link_to 'Editar', edit_study_item_url %>
 <%= link_to 'Deletar', study_item_path(@study_item), :method => :delete %>
 
-<%#TO DO: move to edit view%>
-<%= form_with do |form| %>
-<p><%= form.check_box :status %>
-<%= form.label :status_done, "Concluído" %></p>
-<p><%= form.label :comment, "Comente aqui" %></p>
-<p><%= form.text_area :comment %></p>
-<p><%= form.submit %></p>
+<%= form_with model: @study_item, method: 'PATCH' do |form| %>
+  <p><%= form.check_box :status %>
+  <%= form.label :status, "Concluído" %></p>
+  <p><%=form.button("Salvar") %></p>
+<% end %>
+
+<h3><%= "Comentário" %></h3>
+<p><%= @study_item.comment%></p>
+<%# @study_item.comment.each do |comment|%>
+  <%#= comment %>
+<%# end %>
+
+<%= form_with model: @study_item, method: 'POST' do |form| %>
+  <h4><%= form.label :comment, "Adicionar novo comentário" %></h4>
+  <p><%= form.text_area :comment %></p>
+  <p><%= form.submit("Salvar") %></p>
 <% end %>
 
 <p><%= link_to 'Voltar', root_path%></p>

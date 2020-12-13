@@ -1,5 +1,5 @@
-<%= form_with model: @study_item, method: 'PUT' do |form| %>
-	<%= form.label :title, "Título" %><br>
+<%= form_with model: @study_item do |form| %>
+  <%= form.label :title, "Título" %><br>
   <%= form.text_field :title %><br><br>
   <%= form.label :category, "Categoria" %><br>
   <%= form.text_field :category %> <br><br>
@@ -13,7 +13,6 @@
   <%= form.radio_button :type, "image" %>
   <%= form.label :type_image, "Imagem" %>
   <%= form.radio_button :type, "video" %>
-	<%= form.label :type_video, "Vídeo" %><br><br>
-	<p><%= form.submit %></p>
-	<p><%= link_to 'Voltar', @study_item%></p>
+  <%= form.label :type_video, "Vídeo" %><br><br>
+  <%= form.submit %>
 <% end %>
