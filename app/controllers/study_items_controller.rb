@@ -26,7 +26,7 @@ class StudyItemsController < ApplicationController
   def update
     @study_item = StudyItem.find(params[:id])
     byebug
-    # params[:study_item][:status_updated_at] = DateTime.now unless params[:study_item][:status].nil?
+    params[:study_item][:status_updated_at] = DateTime.now unless params[:study_item][:status].nil?
     redirect_to root_path if @study_item.update(study_item_params)
   end
 
