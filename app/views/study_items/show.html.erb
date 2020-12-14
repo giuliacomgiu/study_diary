@@ -12,17 +12,10 @@
   <p><%=form.button("Salvar") %></p>
 <% end %>
 
-<h3><%= "Comentário" %></h3>
+<h3><%= "Comentários" %></h3>
 <%= render @study_item.comments %>
 
+<h3><%= "Adicione um comentário" %></h3>
 <%= render 'comments/form' %>
-
-<!--
-<%= form_with model: @study_item, method: 'POST' do |form| %>
-  <h4><%= form.label :comment, "Adicionar novo comentário" %></h4>
-  <p><%= form.text_area :comment %></p>
-  <p><%= form.submit("Salvar") %></p>
-<% end %>
--->
 
 <p><%= link_to 'Voltar', root_path%></p>

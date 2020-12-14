@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 2020_12_14_011616) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
+    t.integer "study_item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "study_item_id"
+    t.index ["study_item_id"], name: "index_comments_on_study_item_id"
   end
 
   create_table "study_items", force: :cascade do |t|
@@ -36,4 +37,5 @@ ActiveRecord::Schema.define(version: 2020_12_14_011616) do
     t.time "status_updated_at"
   end
 
+  add_foreign_key "comments", "study_items"
 end

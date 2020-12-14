@@ -23,15 +23,14 @@ class StudyItemsController < ApplicationController
   end
 
   def update
-    byebug
     @study_item = StudyItem.find(params[:id])
-    @study_item.comments << Comment.new(comment: params[:study_item][:comment])
     params[:study_item][:status_updated_at] = DateTime.now unless params[:study_item][:status].nil?
     redirect_to root_path if @study_item.update(study_item_params)
   end
 
   def destroy
-    StudyItem.delete(params[:id])
+    @study_item = StudyItem.find(params[:id])
+    @study_item.destroy
     redirect_to root_path
   end
 
