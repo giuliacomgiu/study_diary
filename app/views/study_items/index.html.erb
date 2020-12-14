@@ -1,6 +1,7 @@
 <h1>Diário de Estudo!</h1>
 
 <h2><%= link_to 'Cadastre seu item de estudo', new_study_item_path %> </h2>
+<h2><%= link_to 'Categorias', categories_path%> </h2>
 
 <h3>Todos os itens de estudo</h3>
 <% @study_items.each do |study_item| %>

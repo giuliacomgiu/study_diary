@@ -1,0 +1,6 @@
+<%= form_with model:@study_item do |form| %>
+<%= form.label :comment, "Adicione um comentário" %><br>
+<%= form.text_field :comment %><br><br>
+<%= form.submit("Salvar") %>
+
+<% end %>

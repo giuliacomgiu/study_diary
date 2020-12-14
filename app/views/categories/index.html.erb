@@ -1,0 +1,14 @@
+<h1>Categorias</h1>
+
+<h2><%= link_to 'Cadastre uma categoria', new_category_path %> </h2>
+
+<h3>Todos as categorias</h3>
+<% @categories.each do |category| %>
+  <h4><%= category.title %> </h4>
+  <%= link_to 'Editar', edit_category_path(category)%>
+  <%= link_to 'Deletar', category_path(category), method: :delete%>
+<% end %>
+
+<br>
+<br>
+<p><%= link_to 'Voltar', root_path %> </p>

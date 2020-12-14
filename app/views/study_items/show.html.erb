@@ -13,15 +13,16 @@
 <% end %>
 
 <h3><%= "Comentário" %></h3>
-<p><%= @study_item.comment%></p>
-<%# @study_item.comment.each do |comment|%>
-  <%#= comment %>
-<%# end %>
+<%= render @study_item.comments %>
 
+<%= render 'comments/form' %>
+
+<!--
 <%= form_with model: @study_item, method: 'POST' do |form| %>
   <h4><%= form.label :comment, "Adicionar novo comentário" %></h4>
   <p><%= form.text_area :comment %></p>
   <p><%= form.submit("Salvar") %></p>
 <% end %>
+-->
 
 <p><%= link_to 'Voltar', root_path%></p>

@@ -5,7 +5,6 @@ class StudyItemsController < ApplicationController
     @study_items = StudyItem.all
   end
 
-  # to do: def new
   def new
     @study_item = StudyItem.new
   end
@@ -24,8 +23,9 @@ class StudyItemsController < ApplicationController
   end
 
   def update
-    @study_item = StudyItem.find(params[:id])
     byebug
+    @study_item = StudyItem.find(params[:id])
+    @study_item.comments << Comment.new(comment: params[:study_item][:comment])
     params[:study_item][:status_updated_at] = DateTime.now unless params[:study_item][:status].nil?
     redirect_to root_path if @study_item.update(study_item_params)
   end
@@ -39,6 +39,6 @@ class StudyItemsController < ApplicationController
 
   def study_item_params
     params.require(:study_item)
-          .permit(:title, :category, :deadline, :status, :status_updated_at)
+          .permit(:title, :category, :deadline, :status, :status_updated_at, :comments)
   end
 end
