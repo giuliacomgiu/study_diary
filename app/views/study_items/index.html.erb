@@ -1,13 +1,16 @@
 <h1>Diário de Estudo!</h1>
 
 <h2><%= link_to 'Cadastre seu item de estudo', new_study_item_path %> </h2>
-<h2><%= link_to 'Categorias', categories_path%> </h2>
 
 <h3>Todos os itens de estudo</h3>
 <% @study_items.each do |study_item| %>
   <h4><%= link_to study_item.title, study_item_path(study_item) %> </h4>
-  <p><%= if study_item.status.eql? true then "Completo!" else "Incompleto!" end %>
-     <%= "Prazo: #{study_item.deadline}" unless study_item.deadline.nil?%>
-  <p><%= study_item.description %></p>
-  <p><%= study_item.category %></p>
+  <p>
+    <%= if study_item.status.eql? true then "Completo!" else "Incompleto!" end %>
+  </p>
+  <p><%= "Prazo: #{study_item.deadline}" unless study_item.deadline.nil?%></p>
+  <p><%= study_item.description %>
+  <p><%= study_item.category.title %></p>
 <% end %>
+
+<h2><%= link_to 'Categorias', categories_path%> </h2>

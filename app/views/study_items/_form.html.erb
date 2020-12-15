@@ -1,0 +1,23 @@
+<% study_item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
+<%= form_with model: study_item, local: true do |form| %>
+	<%= form.label :title, "Título" %><br>
+  <%= form.text_field :title %><br><br>
+  <%= form.label :description, "Descrição" %><br>
+  <%= form.text_area :description %><br><br>
+  <%= form.label :deadline, "Prazo" %><br>
+  <%= form.date_field :deadline %><br><br>
+  <%= form.label :deadline, "Tipo" %><br>
+  <%= form.label :category_id, "Categoria" %><br>
+  <%= collection_select(:category, :id, Category.all, :id, :title) %><br><br>
+  <%= form.radio_button :type, "text" %>
+  <%= form.label :type_text, "Texto" %>
+  <%= form.radio_button :type, "image" %>
+  <%= form.label :type_image, "Imagem" %>
+  <%= form.radio_button :type, "video" %>
+	<%= form.label :type_video, "Vídeo" %><br><br>
+	<p><%= form.submit %></p>
+	<p><%= link_to 'Voltar', study_item%></p>
+<% end %>
