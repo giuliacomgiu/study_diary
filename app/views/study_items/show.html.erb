@@ -1,18 +1,31 @@
+<br><%= link_to 'Voltar', root_path, class: "btn btn-link"%>
 
-<h2><%= @study_item.title %></h2>
-<p><%= @study_item.category.title %></p>
-<p><%= @study_item.description %></p>
-<p><%= @study_item.deadline %></p>
-<%= link_to 'Concluído!', 
-      study_item_path(@study_item, { study_item: { status: 1 } }), 
-      method: :patch %>
-<%= link_to 'Editar', edit_study_item_url(@study_item) %>
-<%= link_to 'Deletar', study_item_path(@study_item), :method => :delete %>
+<%= render @study_item %>
 
+<% if @study_item.complete? %>
+  <p> Concluído em: 
+  <%= @study_item.completed_at.strftime('%d/%m/%y %H:%M') %>
+  </p>
+<% else %>
+  <h4> Prazo:
+  <%= @study_item.deadline %>
+  </h4> 
+  <%= 
+    link_to 'Marcar como concluído!', 
+    complete_study_item_path(@study_item), 
+    method: :patch,
+    class: "btn btn-primary" 
+  %>
+<% end %>
+<%= link_to 'Editar', edit_study_item_url(@study_item), class: "btn btn-secondary" %>
+<%= 
+  link_to 'Deletar', 
+  study_item_path(@study_item), 
+  method: :delete, 
+  class: "btn btn-danger" 
+%>
+
+<br><br>
 <h3><%= "Comentários" %></h3>
 <%= render @study_item.comments %>
-
-<h3><%= "Adicione um comentário" %></h3>
 <%= render 'comments/form' %>
-
-<p><%= link_to 'Voltar', root_path%></p>

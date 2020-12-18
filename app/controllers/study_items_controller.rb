@@ -1,7 +1,5 @@
-require 'date'
-
 class StudyItemsController < ApplicationController
-  before_action :set_study_item, only: %i[show edit update destroy]
+  before_action :set_study_item, only: %i[show edit update complete destroy]
 
   def index
     @study_items = StudyItem.all
@@ -12,7 +10,6 @@ class StudyItemsController < ApplicationController
   end
 
   def create
-    byebug
     @study_item = StudyItem.new(study_item_params)
     @study_item.category = Category.find(params[:category][:id])
     if @study_item.save
@@ -27,7 +24,6 @@ class StudyItemsController < ApplicationController
   def edit; end
 
   def update
-    params[:study_item][:status_updated_at] = DateTime.now unless params[:study_item][:status].nil?
     if @study_item.update(study_item_params)
       redirect_to study_item_path(@study_item)
     else
@@ -40,10 +36,10 @@ class StudyItemsController < ApplicationController
     redirect_to root_path
   end
 
-  # to do: overwrite category method
-  # def category
-  #  category.title
-  # end
+  def complete
+    @study_item.update(completed_at: Time.current)
+    redirect_to root_path
+  end
 
   private
 
@@ -59,6 +55,6 @@ class StudyItemsController < ApplicationController
   def study_item_params
     params.require(:study_item)
           .permit(:title, :description, :deadline,
-                  :status, :status_updated_at, :comments)
+                  :completed_at, :comments)
   end
 end
