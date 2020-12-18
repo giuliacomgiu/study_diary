@@ -2,22 +2,22 @@
   <p><%= message %></p>
 <% end %>
 
-<%= form_with model: study_item, local: true do |form| %>
-	<%= form.label :title, "Título" %><br>
-  <%= form.text_field :title %><br><br>
-  <%= form.label :description, "Descrição" %><br>
-  <%= form.text_area :description %><br><br>
-  <%= form.label :deadline, "Prazo" %><br>
-  <%= form.date_field :deadline %><br><br>
-  <%= form.label :deadline, "Tipo" %><br>
-  <%= form.label :category_id, "Categoria" %><br>
-  <%= collection_select(:category, :id, Category.all, :id, :title) %><br><br>
-  <%= form.radio_button :type, "text" %>
-  <%= form.label :type_text, "Texto" %>
-  <%= form.radio_button :type, "image" %>
-  <%= form.label :type_image, "Imagem" %>
-  <%= form.radio_button :type, "video" %>
-  <%= form.label :type_video, "Vídeo" %><br><br>
-	<p><%= form.submit %></p>
+<%= form_with model: study_item, local: true do |f| %>
+	<%= f.label :title, "Título" %><br>
+  <%= f.text_field :title %><br><br>
+  
+  <%= f.label :description, "Descrição" %><br>
+  <%= f.text_area :description %><br><br>
+  
+  <%= f.label :deadline, "Prazo" %><br>
+  <%= f.date_field :deadline %><br><br>
+  
+  <%= f.label :category_id, "Categoria" %><br>
+  <%= f.collection_select(:category_id, categories.order(:title), :id, :title) %><br><br>
+  
+  <%= f.label :type, "Tipo" %><br>
+  <%= f.collection_select :type_id, types, :id, :title %>
+
+	<p><%= f.submit %></p>
 	<p><%= link_to 'Voltar', study_item%></p>
 <% end %>

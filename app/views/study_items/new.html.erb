@@ -1,1 +1,8 @@
-<%= render partial: 'form', locals: { study_item: @study_item } %>
+<%= 
+  render partial: 'form', 
+  locals: { 
+    study_item: @study_item, 
+    categories: @categories,
+    types: @types 
+  } 
+%>

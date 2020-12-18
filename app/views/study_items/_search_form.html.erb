@@ -1,0 +1,9 @@
+<%= 
+  form_with local: true, 
+            url: search_study_items_path, 
+            method: :get do |form| 
+%>
+  <p><%= form.label :query, "Procure por um item de estudo" %></p>
+  <%= form.text_field :query %>
+  <%= form.submit "Procurar", class:"btn"%>
+<% end %>

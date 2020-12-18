@@ -2,6 +2,8 @@
 
 <h2><%= link_to 'Cadastre seu item de estudo', new_study_item_path %> </h2>
 
+<%= render partial: 'search_form', locals: {study_item: @study_item} %>
+
 <h3>Todos os itens de estudo</h3>
 
 <table class="table" style="width: 50%">

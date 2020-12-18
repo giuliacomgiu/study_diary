@@ -1,5 +1,1 @@
-<%= form_with model: @category do |form| %>
-  <%= form.label :title, "Título" %><br>
-  <%= form.text_field :title %><br><br>
-  <%= form.submit %>
-<% end %>
+<%= render partial: 'form', locals {category: @category} %>

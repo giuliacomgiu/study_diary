@@ -1,5 +1,6 @@
 class StudyItem < ApplicationRecord
   validates :title, presence: true
+
   has_many :comments, dependent: :destroy
   belongs_to :category
 
@@ -26,8 +27,4 @@ class StudyItem < ApplicationRecord
       'Em andamento'
     end
   end
-
-  # def category
-  #  return category.title unless category.title.nil?
-  # end
 end

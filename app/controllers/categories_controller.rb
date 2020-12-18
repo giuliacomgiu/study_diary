@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.save ? (redirect_to categories_path) : (render :new)
+    @category.save ? (redirect_to categories_path(@category)) : (render :new)
   end
 
   def show
@@ -22,7 +22,11 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    redirect_to categories_path if @category.update(category_params)
+    if @category.update(category_params)
+      redirect_to categories_path(@category)
+    else
+      render :edit
+    end
   end
 
   def destroy

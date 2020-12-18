@@ -7,11 +7,12 @@ class StudyItemsController < ApplicationController
 
   def new
     @study_item = StudyItem.new
+    @categories = Category.all
+    @types = Type.all
   end
 
   def create
     @study_item = StudyItem.new(study_item_params)
-    @study_item.category = Category.find(params[:category][:id])
     if @study_item.save
       redirect_to @study_item
     else
@@ -21,7 +22,10 @@ class StudyItemsController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+    @types = Type.all
+  end
 
   def update
     if @study_item.update(study_item_params)
@@ -41,20 +45,30 @@ class StudyItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    # NOTE: from guide:The find_each and find_in_batches methods
+    # are intended for use in the batch processing of a large number of records
+    # that wouldn't fit in memory all at once. If you just need to loop over
+    # a thousand records the regular find methods are the preferred option.
+
+    query_params = "%#{params[:query]}%"
+    @study_items = StudyItem.where("title LIKE ? or
+                                   description LIKE ?",
+                                   query_params, query_params)
+
+    # Not rendering
+  end
+
   private
 
   def set_study_item
     @study_item = StudyItem.find(params[:id])
   end
 
-  def category_params
-    params.require(:category)
-          .permit(:id)
-  end
-
   def study_item_params
     params.require(:study_item)
           .permit(:title, :description, :deadline,
-                  :completed_at, :comments)
+                  :completed_at, :comments,
+                  :category_id, :type_id)
   end
 end

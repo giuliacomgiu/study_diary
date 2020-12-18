@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :study_items do
     resources :comments, only: %i[create destroy show]
     patch 'complete', on: :member
+    get 'search', on: :collection
   end
 
   resources :categories
