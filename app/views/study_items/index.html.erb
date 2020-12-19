@@ -19,8 +19,11 @@
   <tbody>
   <% @study_items.each do |study_item| %>
     <tr>
-      <td><%= link_to study_item.title, study_item_path(study_item) %></td>
-      <td><%= study_item.status_ %></td>
+      <td>
+        <%= render partial: 'icon', locals: {study_item: study_item} %> 
+        <%= link_to study_item.title, study_item_path(study_item) %>
+      </td>
+      <td><%= render partial: 'status', locals: {study_item: study_item} %></td>
       <td><%= "#{study_item.deadline.strftime('%d/%m/%y')}" unless study_item.deadline.nil?%></td>
       <td><%= study_item.category.title %></td>
     </tr>

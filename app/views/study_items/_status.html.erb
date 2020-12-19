@@ -1,0 +1,9 @@
+<% if study_item.complete? && study_item.late? %>
+  <p>Concluído em atraso</p>
+<% elsif study_item.complete? && !study_item.late? %>
+  <p>Concluído</p>
+<% elsif !study_item.complete? && study_item.late? %>
+  <p>Atrasado</p>
+<% else %>
+  <p>Em andamento</p>
+<% end %>
