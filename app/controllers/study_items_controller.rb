@@ -55,8 +55,6 @@ class StudyItemsController < ApplicationController
     @study_items = StudyItem.where("title LIKE ? or
                                    description LIKE ?",
                                    query_params, query_params)
-
-    # Not rendering
   end
 
   private
