@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  http_basic_authenticate_with name: 'dhh', password: 'secret', only: :destroy
+
   def create
     @study_item = StudyItem.find(params[:study_item_id])
     @comment = @study_item.comments.create(comment_params)

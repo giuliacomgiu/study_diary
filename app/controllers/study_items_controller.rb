@@ -1,4 +1,5 @@
 class StudyItemsController < ApplicationController
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
   before_action :set_study_item, only: %i[show edit update complete destroy]
 
   def index
