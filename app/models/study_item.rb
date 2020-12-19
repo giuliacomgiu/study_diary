@@ -15,17 +15,4 @@ class StudyItem < ApplicationRecord
     completed_at > deadline if complete?
     Time.current > deadline
   end
-
-  # to do: find a better place for this
-  def status_
-    if complete? && late?
-      'Concluído em atraso'
-    elsif complete? && !late?
-      'Concluído'
-    elsif !complete? && late?
-      'Atrasado'
-    else
-      'Em andamento'
-    end
-  end
 end
