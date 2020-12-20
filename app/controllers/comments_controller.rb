@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    byebug
     @study_item = StudyItem.find(params[:study_item_id])
-    @comment = @study_item.comments.find(comment_params)
-    @comment.destroy
-    redirect_to @study_item
+    @comment = @study_item.comments.find(params[:id])
+    redirect_to @study_item if @comment.destroy
   end
 
   private

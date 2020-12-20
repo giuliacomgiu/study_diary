@@ -1,3 +1,6 @@
-<p><%= comment.comment %><p>
-<%#= link_to 'Delete', [comment.study_item, comment],
-  method: :delete %>
+<p>
+  <%= comment.comment %>
+  <%= link_to 'Deletar', 
+      [comment.study_item, comment], 
+      method: :delete %>
+</p>

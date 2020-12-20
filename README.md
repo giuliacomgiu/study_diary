@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este Diário de Estudos é uma aplicação proposta pelo treinamento da Code Camp.
+Nele, você pode cadastrar, editar ou deletar um item de estudo. Ele deve ter um título, um tipo, uma categoria, e pode ter uma descrição e um prazo.
 
-Things you may want to cover:
+É possível comentar em um item de estudo e depois apagá-lo.
 
-* Ruby version
+É possível cadastrar, editar e remover categorias.
 
-* System dependencies
+É preciso ter uma conta para utilizar todas as suas features. A autenticação é feita através da gem Devise. Ela foi escolhida por ser bem estabelecida e ter atualizações frequentes. Fazer um sistema de login realmente seguro é uma atividade relativamente complexa, e considerando o tempo disponível para o projeto, não me pareceu uma alternativa adequada.
 
-* Configuration
+Especificações da aplicação:
 
-* Database creation
+- Ruby 2.7.2
 
-* Database initialization
+- Rails 6.0.3.4
 
-* How to run the test suite
+- Devise
 
-* Services (job queues, cache servers, search engines, etc.)
+- Bootstrap
 
-* Deployment instructions
-
-* ...
+- SQLite 3
