@@ -2,5 +2,5 @@
 <% @study_items.each do |study_item| %>
   <h3><%= link_to study_item.title, study_item_path(study_item) %></h3>
   <%= study_item.description %>
-  <%= study_item.category.title %>
+  <%= study_item.categories.map(&:title) %>
 <% end %>

@@ -2,7 +2,7 @@ class StudyItem < ApplicationRecord
   validates :title, presence: true
 
   has_many :comments, dependent: :destroy
-  belongs_to :category
+  has_and_belongs_to_many :categories
   belongs_to :type
 
   def complete?

@@ -3,4 +3,4 @@
 <%if not(@study_item.deadline.nil?)%>
   <p>Prazo: <%= @study_item.deadline.strftime("%d/%m/%y") %></p>
 <%end%>
-<p><%= @study_item.category.title %></p>
+<p><%= study_item.categories.map(&:title) %></p>

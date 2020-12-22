@@ -67,6 +67,6 @@ class StudyItemsController < ApplicationController
     params.require(:study_item)
           .permit(:title, :description, :deadline,
                   :completed_at, :comments,
-                  :category_id, :type_id)
+                  :type_id, category_ids: [])
   end
 end
