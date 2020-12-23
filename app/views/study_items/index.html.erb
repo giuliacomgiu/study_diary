@@ -33,7 +33,7 @@
       </td>
       <td><%= render partial: 'status', locals: {study_item: study_item} %></td>
       <td><%= "#{study_item.deadline.strftime('%d/%m/%y')}" unless study_item.deadline.nil?%></td>
-      <td><%= study_item.categories.map(&:title).join(', ') %></td>
+      <td><%= study_item.categories %></td>
     </tr>
   <% end %>
   </tbody>

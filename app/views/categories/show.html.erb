@@ -1,0 +1,12 @@
+<h1><%= @category.title %></h1>
+<%= link_to 'Editar', edit_category_path(@category)%>
+<%= link_to 'Deletar', category_path(@category), method: :delete%>
+
+<p><% @category.study_items.pluck(:title, :id).each do |title, id| %>
+    <h2><%= link_to title, study_item_path(id) %></h2>
+  <% end %>
+</p>
+
+<br>
+<br>
+<p><%= link_to 'Voltar', root_path %> </p>

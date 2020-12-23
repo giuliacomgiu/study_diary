@@ -15,4 +15,10 @@ class StudyItem < ApplicationRecord
     completed_at > deadline if complete?
     Time.current > deadline
   end
+
+  def categories
+    super
+      .pluck(:title)
+      .to_sentence(two_words_connector: ', ', last_word_connector: ' e ')
+  end
 end
