@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy show]
     patch 'complete', on: :member
     get 'search', on: :collection
+    get 'sort_by', on: :collection
   end
 
   resources :categories

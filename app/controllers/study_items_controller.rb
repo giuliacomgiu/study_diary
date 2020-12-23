@@ -2,7 +2,7 @@ class StudyItemsController < ApplicationController
   before_action :set_study_item, only: %i[show edit update complete destroy]
 
   def index
-    @study_items = StudyItem.all
+    @study_items = StudyItem.order(:title)
   end
 
   def new
@@ -55,6 +55,12 @@ class StudyItemsController < ApplicationController
     @study_items = StudyItem.where("title LIKE ? or
                                    description LIKE ?",
                                    query_params, query_params)
+  end
+
+  def sort_by
+    # safety flaw?
+    @study_items = StudyItem.order(params[:sort_by])
+    render :index
   end
 
   private
