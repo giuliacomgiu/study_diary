@@ -1,5 +1,4 @@
 <h1>Diário de Estudo!</h1>
-
 <h2><%= link_to 'Cadastre seu item de estudo', new_study_item_path %> </h2>
 
 <%= render partial: 'search_form', locals: {study_item: @study_item} %>
@@ -38,5 +37,3 @@
   <% end %>
   </tbody>
 </table>
-
-<h2><%= link_to 'Categorias', categories_path%> </h2>

@@ -1,5 +1,7 @@
 <%= form_with(model:[ @study_item, @study_item.comments.build ], local: true) do |form| %>
-  <%= form.label :comment, "Adicione um comentário" %><br>
-  <%= form.text_area :comment %><br><br>
-  <%= form.submit("Salvar") %>
+  <div class="form-group">
+    <%= form.label :comment, "Adicione um comentário" %>
+    <%= form.text_area :comment, class:"form-control" %>
+  </div>
+  <%= form.submit "Salvar", class: "btn btn-primary" %>
 <% end %>

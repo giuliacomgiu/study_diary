@@ -2,7 +2,7 @@ class StudyItemsController < ApplicationController
   before_action :set_study_item, only: %i[show edit update complete destroy]
 
   def index
-    @study_items = StudyItem.order(:title)
+    @study_items = StudyItem.order('lower(title)')
   end
 
   def new
@@ -59,7 +59,7 @@ class StudyItemsController < ApplicationController
 
   def sort_by
     # safety flaw?
-    @study_items = StudyItem.order(params[:sort_by])
+    @study_items = StudyItem.order("lower(#{params[:sort_by]})")
     render :index
   end
 

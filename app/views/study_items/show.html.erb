@@ -1,31 +1,38 @@
-<br><%= link_to 'Voltar', root_path, class: "btn btn-link"%>
+<div class = "row">
+  <div class = "col-4 py-3 border">
+    <%= render @study_item %>
+    <% if @study_item.complete? %>
+      <p> Concluído em: 
+      <%= @study_item.completed_at.strftime('%d/%m/%y %H:%M') %>
+      </p>
+    <% else %>       
+      <%= link_to 'Marcar como concluído!', 
+        complete_study_item_path(@study_item), 
+        method: :patch,
+        class: "btn btn-success" 
+      %>
+    <% end %>
+    <%= link_to 'Editar', 
+        edit_study_item_url(@study_item), 
+        class: "btn btn-secondary" 
+    %>
+    <%= link_to 'Deletar', 
+        study_item_path(@study_item), 
+        method: :delete, 
+        class: "btn btn-danger" 
+    %>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-4">
+    <br><br>
+    <!-- render all comments -->
+    <h3><%= "Comentários" %></h3>
+    <%= render @study_item.comments %>
 
-<%= render @study_item %>
+    <!-- render new comment form -->
+    <%= render 'comments/form' %>
 
-<% if @study_item.complete? %>
-  <p> Concluído em: 
-  <%= @study_item.completed_at.strftime('%d/%m/%y %H:%M') %>
-  </p>
-<% else %>
-  <h4> Prazo:
-  <%= @study_item.deadline %>
-  </h4> 
-  <%= 
-    link_to 'Marcar como concluído!', 
-    complete_study_item_path(@study_item), 
-    method: :patch,
-    class: "btn btn-primary" 
-  %>
-<% end %>
-<%= link_to 'Editar', edit_study_item_url(@study_item), class: "btn btn-secondary" %>
-<%= 
-  link_to 'Deletar', 
-  study_item_path(@study_item), 
-  method: :delete, 
-  class: "btn btn-danger" 
-%>
-
-<br><br>
-<h3><%= "Comentários" %></h3>
-<%= render @study_item.comments %>
-<%= render 'comments/form' %>
+    <br><%= link_to 'Voltar', root_path, class: "btn btn-link"%>
+</div>
+</div>

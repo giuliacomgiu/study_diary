@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Devise to authenticate
 gem 'devise'
+# Use bootstrap 4 as front end framework
+gem 'bootstrap', '~>4.5.3'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -42,10 +44,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # Front end framework
-  gem 'bootstrap-sass', '~> 3.4.1'
-  gem 'jquery-rails'
-  gem 'sassc-rails', '>= 2.1.0'
 end
 
 group :test do

@@ -3,21 +3,40 @@
 <% end %>
 
 <%= form_with model: study_item, local: true do |f| %>
-	<%= f.label :title, "Título" %><br>
-  <%= f.text_field :title %><br><br>
+<div class="form-group"%>
+  <%= f.label :title, "Título" %>
+  <%= f.text_field :title, {class:"form-control"} %>
+</div>
   
-  <%= f.label :description, "Descrição" %><br>
-  <%= f.text_area :description %><br><br>
+<div class="form-group">
+  <%= f.label :description, "Descrição" %>
+  <%= f.text_area :description, {class:"form-control"} %>
+</div>
   
-  <%= f.label :deadline, "Prazo" %><br>
-  <%= f.date_field :deadline %><br><br>
+<div class="form-group">
+  <%= f.label :deadline, "Prazo" %>
+  <%= f.date_field :deadline, {class:"form-control"} %>
+</div>
   
-  <%= f.label :category_id, "Categoria" %><br>
-  <%= f.collection_check_boxes(:category_ids, categories.order(:title), :id, :title) %><br><br>
-  
-  <%= f.label :type, "Tipo" %><br>
-  <%= f.collection_select :type_id, types, :id, :title %>
+<!--To do: space out checkboxes-->
+<div class="form-group">
+  <%= f.label :category_id, "Categoria" %>
+  <div class="form-check">
+    <%= f.collection_check_boxes(:category_ids, categories.order(:title), 
+                                :id, :title) %>
+  </div>
+</div>
 
-	<p><%= f.submit %></p>
-	<p><%= link_to 'Voltar', study_item%></p>
+<!--To do: space out checkboxes-->
+<div class="form-group">
+  <%= f.label :type, "Tipo" %>
+  <div class="form-check">
+    <%= f.collection_radio_buttons :type_id, types, :id, :title %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.submit "Criar um item", class: "btn btn-primary" %>
+  <%= link_to 'Voltar', study_item, class: "btn btn-secondary"%>
+</div>
 <% end %>
