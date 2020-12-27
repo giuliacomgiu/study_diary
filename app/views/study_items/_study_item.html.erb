@@ -1,6 +1,6 @@
-<h3><%= @study_item.title %></h3>
-<p><%= @study_item.description %></p>
-<%if not(@study_item.deadline.nil?)%>
-  <p>Prazo: <%= @study_item.deadline.strftime("%d/%m/%y") %></p>
+<p><strong><%= study_item.title %></strong></p>
+<p><%= study_item.description %></p>
+<%if study_item.deadline.present? %>
+  <p>Prazo: <%= study_item.deadline.strftime("%d/%m/%y") %></p>
 <%end%>
 <p>Categoria: <%= study_item.categories %></p>

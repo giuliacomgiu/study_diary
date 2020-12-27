@@ -3,7 +3,9 @@
             url: search_study_items_path, 
             method: :get do |form| 
 %>
-  <p><%= form.label :query, "Procure por um item de estudo" %></p>
-  <%= form.text_field :query %>
-  <%= form.submit "Procurar", class:"btn"%>
+  <%= form.text_field :query, 
+    placeholder: "Procure aqui",
+    class: "form-control mr-sm-2"
+    %>
+  <%= form.submit "Procurar", class:"btn btn-light btn-outline-success my-2 my-sm-0"%>
 <% end %>

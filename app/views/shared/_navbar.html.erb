@@ -1,31 +1,22 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary mb-3">
+  <a class="navbar-brand" href="/"> Diário de Estudo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href='/'>Itens de Estudo <span class="sr-only">(current)</span></a></li>
-        <li><a href="/categories">Categorias</a></li>
-      </ul>
-      <p class="navbar-text navbar-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
-      <% end %>
-      </p>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Itens de Estudo <span class="sr-only">(current)</span> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/categories">Categorias</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <%= render partial: 'study_items/search_form.html.erb' %>
+      <!--<input class="form-control mr-sm-2" type="search" placeholder="Pesquise..." aria-label="Search">
+      <button class="btn btn-light btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    --></form>
+  </div>
 </nav>
