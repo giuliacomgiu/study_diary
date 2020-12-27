@@ -1,3 +1,5 @@
+Último commit válido antes do prazo foi feito dia 20/12
+
 # Diário de Estudos
 
 Este Diário de Estudos é uma aplicação proposta pelo treinamento da Code Camp.
