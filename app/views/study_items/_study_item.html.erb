@@ -1,8 +1,12 @@
-<p><strong><%= study_item.title %></strong></p>
+<h4><%= study_item.title %></h4>
 <p><%= study_item.description %></p>
 <%if study_item.deadline.present? %>
-  <p><%= study_item.status.capitalize %>
-  - Prazo: <%= study_item.deadline.strftime("%d/%m/%y") %>
+  <p>
+    <%= study_item.status.capitalize %> 
+    <% if study_item.complete? %>
+      em <%= @study_item.completed_at.strftime('%d/%m/%y') %>
+    <% end %>
+    - Prazo: <%= study_item.deadline.strftime("%d/%m/%y") %>
   </p>
 <%end%>
 <p>Categoria: <%= study_item.categories %></p>

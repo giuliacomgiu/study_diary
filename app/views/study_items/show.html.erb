@@ -1,11 +1,34 @@
-<div class = "row">
-  <div class = "col-4 py-3 border">
+<div class = "row p-3 mx-5">
+  <div class = "col py-3 border">
     <%= render @study_item %>
-    <%= render partial: "study_item's_buttons", locals: { study_item: @study_item } %>
+
+    <!-- buttons -->
+    <div class = "row">
+      <% if !@study_item.complete? %>
+        <div class = "col-3">
+          <%= link_to 'Marcar como concluído!', 
+            complete_study_item_path(@study_item), 
+            method: :patch, class: "btn btn-success btn-block" 
+          %>
+        </div>
+      <% end %>
+      <div class = "col-2">
+        <%= link_to 'Editar', 
+            edit_study_item_url(@study_item), 
+            class: "btn btn-secondary btn-block" 
+        %>
+      </div>
+      <div class = "col-2">
+        <%= link_to 'Deletar', 
+            study_item_path(@study_item), 
+            method: :delete, class: "btn btn-danger btn-block" 
+        %>
+      </div>
+    </div>
   </div>
 </div>
-<div class = "row">
-  <div class = "col-4">
+<div class = "row px-3 mx-5">
+  <div class = "col">
     <br><br>
     <!-- render all comments -->
     <h3><%= "Comentários" %></h3>

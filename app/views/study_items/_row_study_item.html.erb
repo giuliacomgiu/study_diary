@@ -6,10 +6,7 @@
   <% @study_items.each do |study_item| %>
     <% if study_item.status.eql? status %>
       <div class = "col-3 border p-3 mx-3 ">
-        <h4> <%= link_to study_item.title, study_item_path(study_item) %> </h4>
-        <h5> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" if study_item.deadline.present? %> </h5>
-        <h5> Categorias: <%= study_item.categories %> </h5>
-        <%= render partial: "study_item's_buttons", locals: { study_item: study_item } %>
+      <%= render partial: "study_item_preview", locals: { study_item: study_item } %>
       </div>
     <% end %>
   <% end %>

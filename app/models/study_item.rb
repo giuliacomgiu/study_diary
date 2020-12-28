@@ -10,6 +10,19 @@ class StudyItem < ApplicationRecord
              complete: 'concluído',
              completed_late: 'concluído em atraso' }.freeze
 
+  def categories
+    super
+      .pluck(:title)
+      .to_sentence(two_words_connector: ', ', last_word_connector: ' e ')
+  end
+
+  # to do: find out how to name this description.preview
+  def description_preview
+    return if description.empty?
+
+    description.slice(0..30).split.slice(0..-2).join(' ').concat '...'
+  end
+
   def status
     if complete?
       STATUS[:complete]
@@ -29,11 +42,5 @@ class StudyItem < ApplicationRecord
 
     completed_at > deadline if complete?
     Time.current > deadline
-  end
-
-  def categories
-    super
-      .pluck(:title)
-      .to_sentence(two_words_connector: ', ', last_word_connector: ' e ')
   end
 end

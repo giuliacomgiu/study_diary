@@ -1,10 +1,10 @@
-<% case study_item.type.title.downcase %>
+<% case type %>
   <% when 'text' %>
-    <span class="glyphicon glyphicon-text-color"></span>
+    <i class="fas fa-file-alt"></i>  
   <% when 'video'%>
-    <span class="glyphicon glyphicon-play-circle"></span> 
+    <i class="fas fa-video"></i>
   <% when 'image' %>
-    <span class="glyphicon glyphicon-picture"></span> 
+    <i class="fas fa-image"></i>
   <% else %>
-    <span class="glyphicon glyphicon-warning-sign"></span>
+    <i class="fas fa-question"></i>
 <% end %>

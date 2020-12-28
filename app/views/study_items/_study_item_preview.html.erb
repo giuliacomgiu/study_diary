@@ -1,3 +1,16 @@
+<!--study items-->
+<h5 class = "center"> 
+  <%= link_to study_item.title, study_item_path(study_item) %> 
+</h5>
+<p><small>
+  <%= render partial: 'icon', locals: {type: study_item.type.title.downcase} %> •
+  <%= study_item.comments.size %> <i class="fas fa-comment"></i> • 
+  <%= study_item.categories %>
+</small></p>
+<p> <%= study_item.description_preview %> </p>
+<p> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" if study_item.deadline.present? %> </p>
+
+<!--buttons-->
 <% if study_item.complete? %>
   <p> Concluído em: 
   <%= study_item.completed_at.strftime('%d/%m/%y %H:%M') %>
@@ -9,6 +22,7 @@
     class: "btn btn-success btn-block" 
   %></p>
 <% end %>
+
 <div class = "row">
   <div class = "col-6">
     <%= link_to 'Editar', 
