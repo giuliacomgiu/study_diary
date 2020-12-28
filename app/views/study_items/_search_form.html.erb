@@ -1,11 +1,10 @@
-<%= 
-  form_with local: true, 
-            url: search_study_items_path, 
-            method: :get do |form| 
+<%= form_with local: true, 
+              url: search_study_items_path, 
+              html: { class: "form-inline my-2 my-md-0" },
+              method: :get do |form| 
 %>
   <%= form.text_field :query, 
-    placeholder: "Procure aqui",
-    class: "form-control mr-sm-2"
-    %>
-  <%= form.submit "Procurar", class:"btn btn-light btn-outline-success my-2 my-sm-0"%>
+    placeholder: "Procure aqui"
+  %>
+  <%= form.submit "Procurar", class:"btn mx-2 btn-light btn-outline-secondary"%>
 <% end %>

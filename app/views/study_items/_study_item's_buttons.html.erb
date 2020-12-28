@@ -6,16 +6,21 @@
   <p><%= link_to 'Marcar como concluído!', 
     complete_study_item_path(study_item), 
     method: :patch,
-    class: "btn btn-success" 
+    class: "btn btn-success btn-block" 
   %></p>
 <% end %>
-
-<%= link_to 'Editar', 
-    edit_study_item_url(study_item), 
-    class: "btn btn-secondary" 
-%>
-<%= link_to 'Deletar', 
-    study_item_path(study_item), 
-    method: :delete, 
-    class: "btn btn-danger" 
-%>
+<div class = "row">
+  <div class = "col-6">
+    <%= link_to 'Editar', 
+        edit_study_item_url(study_item), 
+        class: "btn btn-secondary btn-block" 
+    %>
+  </div>
+  <div class = "col-6">
+    <%= link_to 'Deletar', 
+        study_item_path(study_item), 
+        method: :delete, 
+        class: "btn btn-danger btn-block" 
+    %>
+  </div>
+</div>

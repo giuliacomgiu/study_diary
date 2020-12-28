@@ -1,109 +1,26 @@
 <!-- em andamento -->
-<div class = "row p-2 mx-2">
-  <h3>Em andamento</h3>
-</div>
-<div class = "row px-2 mx-2">
-  <%= form_with model: @study_item,
-                local: true, 
-                url: sort_by_study_items_path,
-                method: :get do |form| %>
-    <%= form.label :sort_by, "Ordernar por:" %>
-    <%= form.select :sort_by, [["Título", :title], ["Prazo", :deadline]] %>
-    <%= form.submit "Ok" %>
-  <% end %>
-</div>
-<div class = "row p-2 mb-3 mx-2">
-  <% @study_items.each do |study_item| %>
-    <% if !study_item.complete? && !study_item.late? %>
-      <div class = "col-3 border mx-2">
-        <h4> <%= link_to study_item.title, study_item_path(study_item) %> </h4>
-        <h5> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" if study_item.deadline.present? %> </h5>
-        <h5> Categorias: <%= study_item.categories %> </h5>
-        <%= render partial: "study_item's_buttons", locals: { study_item: study_item } %>
-      </div>
-    <% end %>
-  <% end %>
+<div class = "row mb-3 mx-auto border">
+  <div class = "col py-2 bg-light">
+    <%= render partial: "row_study_item", 
+           locals: { status: StudyItem::STATUS[:ongoing] } 
+    %>
+  </div>
 </div>
 
 <!-- atrasado -->
-<div class = "row p-2 mb-0 mx-2">
-  <div class = "col-3 ">
-    <h3>Atrasado</h3>
+<div class = "row mb-3 mx-auto border">
+  <div class = "col py-2 bg-light">
+    <%= render partial: "row_study_item", 
+              locals: { status: StudyItem::STATUS[:late] } 
+    %>
   </div>
-  <div class = "col-3">
-    <%= form_with model: @study_item,
-                  local: true, 
-                  url: sort_by_study_items_path,
-                  method: :get do |form| %>
-      <%= form.label :sort_by, "Ordernar por:" %>
-      <%= form.select :sort_by, [["Título", :title], ["Prazo", :deadline]] %>
-      <%= form.submit "Ok" %>
-    <% end %>
-  </div>
-</div>
-<div class = "row p-2 mb-3 mx-2">
-  <% @study_items.each do |study_item| %>
-    <% if !study_item.complete? && study_item.late? %>
-      <div class = "col-3">
-        <h4> <%= link_to study_item.title, study_item_path(study_item) %> </h4>
-        <h5> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" if study_item.deadline.present? %> </h5>
-        <h5> Categorias: <%= study_item.categories %> </h5>
-        <%= render partial: "study_item's_buttons", locals: { study_item: study_item } %>
-      </div>
-    <% end %>
-  <% end %>
 </div>
 
 <!-- concluidos -->
-<div class = "row p-2 mb-0 mx-2">
-  <div class = "col-3 ">
-    <h3>Completo</h3>
-  </div>
-  <div class = "col-3">
-    <%= form_with model: @study_item,
-                  local: true, 
-                  url: sort_by_study_items_path,
-                  method: :get do |form| %>
-      <%= form.label :sort_by, "Ordernar por:" %>
-      <%= form.select :sort_by, [["Título", :title], ["Prazo", :deadline]] %>
-      <%= form.submit "Ok" %>
-    <% end %>
+<div class = "row mb-3 mx-auto border">
+  <div class = "col py-2 bg-light">
+    <%= render partial: "row_study_item", 
+              locals: { status: StudyItem::STATUS[:complete] } 
+    %>
   </div>
 </div>
-<div class = "row p-2 mb-3 mx-2">
-  <% @study_items.each do |study_item| %>
-    <% if study_item.complete? %>
-      <div class = "col-3">
-        <h4> <%= link_to study_item.title, study_item_path(study_item) %> </h4>
-        <h5> <%= "Prazo: #{study_item.deadline.strftime('%d/%m/%y')}" if study_item.deadline.present? %> </h5>
-        <h5> Categorias: <%= study_item.categories %> </h5>
-        <%= render partial: "study_item's_buttons", locals: { study_item: study_item } %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<table class="table" style="width: 50%">
-<thead>
-  <tr>
-    <th scope="col">Título</th>
-    <th scope="col">Status</th>
-    <th scope="col">Prazo</th>
-    <th scope="col">Categoria</th>
-  </tr>
-</thead>
-
-<tbody>
-<% @study_items.each do |study_item| %>
-  <tr>
-    <td>
-      <%= render partial: 'icon', locals: {study_item: study_item} %> 
-      <%= link_to study_item.title, study_item_path(study_item) %>
-    </td>
-    <td><%= render partial: 'status', locals: {study_item: study_item} %></td>
-    <td><%= "#{study_item.deadline.strftime('%d/%m/%y')}" unless study_item.deadline.nil?%></td>
-    <td><%= study_item.categories %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>

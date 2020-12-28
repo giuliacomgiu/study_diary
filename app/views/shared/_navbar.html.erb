@@ -5,18 +5,39 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- left side of navbar, including categories and study items -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Itens de Estudo <span class="sr-only">(current)</span> </a>
+      <li class="nav-item">
+        <a class="nav-link" href="/study_items/new">Criar Item de Estudo </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/categories">Categorias</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <%= render partial: 'study_items/search_form.html.erb' %>
-      <!--<input class="form-control mr-sm-2" type="search" placeholder="Pesquise..." aria-label="Search">
-      <button class="btn btn-light btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    --></form>
+
+    <!-- form -->
+    <%= render 'study_items/search_form' %>
+
+    <!-- account settings -->
+    <ul class="navbar-nav ml-2">
+      <% if current_user %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.email %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Account Settings", edit_user_registration_path, class:"dropdown-item" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+        </div>
+      </li>
+      <% else %>
+      <li class="nav-item">
+          <%= link_to "Create Account", new_user_registration_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+      </li>
+      <% end %>
+    </ul>
   </div>
 </nav>

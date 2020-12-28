@@ -1,0 +1,9 @@
+<%= form_with model: study_item,
+                local: true, 
+                html: { class: "form-inline mx-3" },
+                url: sort_by_study_items_path,
+                method: :get do |form| %>
+  <%= form.label :sort_by, "Ordernar por: ", class: "mx-1" %>
+  <%= form.select :sort_by, [["Título", :title], ["Prazo", :deadline]] %>
+  <%= form.submit "Ok", class: "btn btn-sm btn-outline-primary mx-1" %>
+<% end %>

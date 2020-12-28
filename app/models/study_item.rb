@@ -5,6 +5,21 @@ class StudyItem < ApplicationRecord
   has_and_belongs_to_many :categories
   belongs_to :type
 
+  STATUS = { ongoing: 'em andamento',
+             late: 'atrasado',
+             complete: 'concluído',
+             completed_late: 'concluído em atraso' }.freeze
+
+  def status
+    if complete?
+      STATUS[:complete]
+    elsif !complete? && late?
+      STATUS[:late]
+    else
+      STATUS[:ongoing]
+    end
+  end
+
   def complete?
     completed_at.present?
   end
