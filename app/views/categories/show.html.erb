@@ -1,12 +1,24 @@
-<h1><%= @category.title %></h1>
-<%= link_to 'Editar', edit_category_path(@category)%>
-<%= link_to 'Deletar', category_path(@category), method: :delete%>
-
-<p><% @category.study_items.pluck(:title, :id).each do |title, id| %>
-    <h2><%= link_to title, study_item_path(id) %></h2>
+<div class = "row mx-2">
+  <h3 class="mx-3"><%= @category.title %></h3>
+  <%= link_to 'Editar', 
+      edit_category_path(@category), 
+      class:"btn btn-link"
+  %>
+  <%= link_to 'Deletar', 
+      category_path(@category), 
+      class:"btn btn-link", 
+      method: :delete 
+  %>
+</div>
+<div class = "row pt-4 p-2 mx-3">
+  <h5> Postagens desta categoria  </h5>
+</div>
+<div class = "row p-2 mx-2">
+  <% @category.study_items.each do |study_item| %>
+    <div class = "col-3 border p-3 mx-3 bg-light ">
+      <%= render partial: 'study_items/study_item_preview', locals: {study_item: study_item} %>
+    </div>
   <% end %>
-</p>
+</div>
 
-<br>
-<br>
-<p><%= link_to 'Voltar', root_path %> </p>
+<%= link_to 'Voltar', categories_path, class: "btn btn-link" %>

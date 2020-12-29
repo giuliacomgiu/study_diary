@@ -3,7 +3,7 @@
   <%= link_to study_item.title, study_item_path(study_item) %> 
 </h5>
 <p><small>
-  <%= render partial: 'icon', locals: {type: study_item.type.title.downcase} %> •
+  <%= render partial: 'study_items/icon', locals: {type: study_item.type.title.downcase} %> •
   <%= study_item.comments.size %> <i class="fas fa-comment"></i> • 
   <%= study_item.categories %>
 </small></p>

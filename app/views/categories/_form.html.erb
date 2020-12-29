@@ -1,9 +1,11 @@
+<!-- wrong formatting when errors occur -->
 <% category.errors.full_messages.each do |message| %>
   <p><%= message %></p>
 <% end %>
 
-<%= form_with model: category, local: true do |f| %>
-  <%= f.label :title, "Título" %><br>
-  <%= f.text_field :title %><br><br>
-  <%= f.submit %>
-<% end %>
+<div class = "form-inline">
+  <%= form_with model: category, local: true do |f| %>
+    <%= f.text_field :title, placeholder: "Categoria...", class: "form-control" %>
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+  <% end %>
+</div>

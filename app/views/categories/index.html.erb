@@ -1,14 +1,23 @@
-<h1>Categorias</h1>
+<div class = "row mb-3 mx-auto">
+  <div class = "col py-2">
+    <h3>Categorias</h3>
+  </div>
+</div>
 
-<h2><%= link_to 'Cadastre uma categoria', new_category_path %> </h2>
+<div class = "row mb-3 mx-auto">
+  <div class = "col-2 p-3 m-3 border bg-light">
+  <!-- find better way to do this -->
+    <a href='/categories/new'><p style="text-align:center"><i class="fas fa-plus fa-3x"></i></p></a>
+    <%= link_to 'Adicionar categoria', new_category_path, style:"text-align:center" %>
+  </div>
 
-<h3>Todos as categorias</h3>
-<% @categories.each do |category| %>
-  <h4><%= link_to category.title, category_path(category) %> </h4>
-  <%= link_to 'Editar', edit_category_path(category)%>
-  <%= link_to 'Deletar', category_path(category), method: :delete%>
-<% end %>
+  <% @categories.each do |category| %>
+    <div class = "col-2 p-3 m-3 border bg-light" style="text-align:center">
+      <h4><%= link_to category.title, category_path(category) %> </h4>
+      <%= link_to 'Editar', edit_category_path(category), class: "btn btn-sm btn-secondary" %>
+      <%= link_to 'Deletar', category_path(category), class: "btn btn-sm btn-danger", method: :delete%>
+    </div>
+  <% end %>
+</div>
 
-<br>
-<br>
-<p><%= link_to 'Voltar', root_path %> </p>
+<%= link_to 'Voltar', root_path, class: "btn btn-link" %>
